@@ -1,5 +1,5 @@
 import time, os, sys, json, ast
-path= "/home/runner/work/azure-waf-solution-template-/azure-waf-solution-template-"
+path= "/home/runner/work/azure-waf-solution-template/azure-waf-solution-template"
 sys.path.insert(0, path)
 from Lib.utils import *
 from Lib.var import *
