@@ -1,5 +1,5 @@
 import json,sys
-path= "/home/runner/work/azure-waf-solution-template-/azure-waf-solution-template-"
+path= "/home/runner/work/azure-waf-solution-template/azure-waf-solution-template"
 sys.path.insert(0, path)
 
 NAP_TEST = True
