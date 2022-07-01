@@ -1,0 +1,11 @@
+{"cftName": "azure-cft",
+"location_name": "eastus",
+"dashboard_name": "Dashboard-NAP-WAF",
+"virnetworkId": "user-shshaik-vnet4",
+"workspaceName": "sshaik-law2",
+"adminUsername": "demouser",
+"adminPassword": "Demouser1234",
+"resourceGroup": "user-shshaik",
+"tenandId": "dd3dfd2f-6a3b-40d1-9be0-bf8327d81c50",
+"subscriptionId": "e1e590f6-555e-4dc0-8472-be7fab700b51"
+}

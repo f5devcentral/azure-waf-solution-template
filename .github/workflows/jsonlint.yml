@@ -1,0 +1,18 @@
+name: JSON check
+on: 
+  #push: {branches: master}
+  #pull_request: {branches: master} 
+  workflow_dispatch:
+    inputs:
+      msg: 
+        description: 'Release version tag'
+        default: 'v1.0.0'  
+jobs:
+  json-syntax-chk:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: json-syntax-check
+        uses: limitusus/json-syntax-check@v1
+        with:
+          pattern: "\\.json$"

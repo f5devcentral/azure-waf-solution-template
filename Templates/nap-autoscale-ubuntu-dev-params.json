@@ -1,0 +1,159 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "location": {
+            "value": "eastus"
+        },
+        "osDiskType": {
+            "value": "Premium_LRS"
+        },
+        "virtualNetworkId": {
+            "value": "/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourceGroups/user-shshaik/providers/Microsoft.Network/virtualNetworks/user-shshaik-vnet2"
+        },
+        "virtualNetworkName": {
+            "value": "user-shshaik-vnet2"
+        },
+        "networkSecurityGroups": {
+            "value": [
+                {
+                    "name": "basicNsguser-shshaik-vnet2-nic01",
+                    "id": "/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourceGroups/user-shshaik/providers/Microsoft.Network/networkSecurityGroups/basicNsguser-shshaik-vnet2-nic01",
+                    "rules": []
+                }
+            ]
+        },
+        "networkInterfaceConfigurations": {
+            "value": [
+                {
+                    "name": "user-shshaik-vnet2-nic01",
+                    "primary": true,
+                    "subnetId": "/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourceGroups/user-shshaik/providers/Microsoft.Network/virtualNetworks/user-shshaik-vnet2/subnets/default",
+                    "applicationGatewayBackendAddressPools": [],
+                    "loadBalancerBackendAddressPools": [
+                        {
+                            "id": "[parameters('backendPoolId')]"
+                        }
+                    ],
+                    "applicationSecurityGroups": [],
+                    "loadBalancerInboundNatPools": [
+                        {
+                            "id": "[parameters('inboundNatPoolId')]"
+                        }
+                    ],
+                    "enableAcceleratedNetworking": true,
+                    "nsgName": "basicNsguser-shshaik-vnet2-nic01",
+                    "nsgId": "/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourceGroups/user-shshaik/providers/Microsoft.Network/networkSecurityGroups/basicNsguser-shshaik-vnet2-nic01",
+                    "pipName": ""
+                }
+            ]
+        },
+        "publicIpAddressName": {
+            "value": "azure-cft-ip"
+        },
+        "backendPoolName": {
+            "value": "azure-cft-bepool"
+        },
+        "backendPoolId": {
+            "value": "/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourceGroups/user-shshaik/providers/Microsoft.Network/loadBalancers/azure-cft-lb/backendAddressPools/azure-cft-bepool"
+        },
+        "loadBalancerName": {
+            "value": "azure-cft-lb"
+        },
+        "inboundNatPoolId": {
+            "value": "/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourceGroups/user-shshaik/providers/Microsoft.Network/loadBalancers/azure-cft-lb/inboundNatPools/natpool"
+        },
+        "vmName": {
+            "value": "azure-cft"
+        },
+        "virtualMachineScaleSetName": {
+            "value": "azure-cft"
+        },
+        "singlePlacementGroup": {
+            "value": "false"
+        },
+        "instanceCount": {
+            "value": "2"
+        },
+        "instanceSize": {
+            "value": "Standard_D2s_v3"
+        },
+        "scaleInPolicy": {
+            "value": {
+                "rules": [
+                    "Default"
+                ]
+            }
+        },
+        "instanceTermincationNotificationNotBeforeTimeout": {
+            "value": "PT12M"
+        },
+        "overprovision": {
+            "value": false
+        },
+        "upgradePolicy": {
+            "value": "Manual"
+        },
+        "adminUsername": {
+            "value": "demouser"
+        },
+        "adminPassword": {
+            "value": "Demouser1234"
+        },
+        "autoScaleDefault": {
+            "value": "2"
+        },
+        "autoScaleMin": {
+            "value": "2"
+        },
+        "autoScaleMax": {
+            "value": "10"
+        },
+        "scaleOutCPUPercentageThreshold": {
+            "value": "70"
+        },
+        "durationTimeWindow": {
+            "value": "5"
+        },
+        "scaleOutInterval": {
+            "value": "1"
+        },
+        "scaleInCPUPercentageThreshold": {
+            "value": "30"
+        },
+        "scaleInInterval": {
+            "value": "1"
+        },
+        "autoscaleDiagnosticLogsWorkspaceId": {
+            "value": "/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourcegroups/user-shshaik/providers/microsoft.operationalinsights/workspaces/sshaik-law"
+        },
+        "healthExtensionProtocol": {
+            "value": "http"
+        },
+        "healthExtensionPort": {
+            "value": 80
+        },
+        "healthExtensionRequestPath": {
+            "value": "/"
+        },
+        "autoRepairsPolicyEnabled": {
+            "value": false
+        },
+        "gracePeriod": {
+            "value": "PT10M"
+        },
+        "platformFaultDomainCount": {
+            "value": "1"
+        },
+        "zone": {
+            "value": [
+                "1",
+                "2",
+                "3"
+            ]
+        },
+        "zoneBalance": {
+            "value": "false"
+        }
+    }
+}

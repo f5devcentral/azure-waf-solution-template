@@ -1,0 +1,21 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "dashboards_name": {
+      "value": "Dashboard-NAP-WAF"
+    },
+    "location": {
+      "value": "eastus"
+    },
+    "loadBalancerName": {
+      "value": "/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourceGroups/user-shshaik/providers/Microsoft.Network/loadBalancers/azure-cft-lb"
+    },
+    "vmssName": {
+      "value": "/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourcegroups/user-shshaik/providers/microsoft.compute/virtualmachinescalesets/azure-cft"
+    },
+    "vmssLableName": {
+      "value": "azure-cft"
+    }
+  }
+}
