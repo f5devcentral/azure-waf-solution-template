@@ -1,5 +1,5 @@
 import subprocess,os,sys,paramiko
-path= "/home/runner/work/azure-waf-solution-template-/azure-waf-solution-template-"
+path= "/home/runner/work/azure-waf-solution-template/azure-waf-solution-template"
 sys.path.insert(0, path)
 from Lib.var import azure_user_json
 from paramiko.ssh_exception import SSHException
