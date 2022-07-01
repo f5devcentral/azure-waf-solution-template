@@ -38,7 +38,7 @@ def validate_user_params():
             get_vnet2= az_get_cmd_op(vnet_show)
             if "ResourceNotFound" in get_vnet2:
                   print(azure_user_data["virnetworkId"] ," Not created")
-                  exit
+                  return False
         #Workspace verification
         print("\nWorkspace verification - " , azure_user_data["workspaceName"])
         wsg_show= "az monitor log-analytics workspace show -g "  + azure_user_data["resourceGroup"] + " --workspace-name " + azure_user_data["workspaceName"] + " --output table" 
@@ -48,10 +48,10 @@ def validate_user_params():
             print(azure_user_data["workspaceName"] , "is not exists!!, Creating the same")
             create_law_cmd= "az monitor log-analytics workspace create --location " + azure_user_data["location_name"]  + " -g " + azure_user_data["resourceGroup"] + " --workspace-name " + azure_user_data["workspaceName"]
             create_workspace= az_get_cmd_op(create_law_cmd) 
-            get_workspace= az_get_cmd_op(create_workspace)
+            get_workspace= az_get_cmd_op(wsg_show)
             if "ResourceNotFound" in get_workspace:
                   print(azure_user_data["workspaceName"] ," Not created")
-                  exit         
+                  return False         
         
         
 def update_param_file(param_file,resource="cft"):
