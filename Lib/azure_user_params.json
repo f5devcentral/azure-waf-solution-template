@@ -1,5 +1,5 @@
 {"cftName": "azure-cft",
-"location_name": "eastus",
+"location_name": "eastus2",
 "dashboard_name": "azure-cft-dashboard",
 "virnetworkId": "azure-cft-vnet",
 "workspaceName": "azure-cft-workspace",
