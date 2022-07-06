@@ -31,7 +31,8 @@ Here are the reasons received from the customers who are deploying their deploym
   ![image](https://user-images.githubusercontent.com/39581520/174728292-7c9aa06a-377d-4a35-94d2-11d6863a25a5.png)
 
 ## Automation:
-        The following diagram represents the end-to-end automation solution. GitLab is used as a CI/CD platform. Gitlab pipeline sets up and configures the entire system from the ground up. The first stage creates all necessary Azure resources such as Azure AS, VMSS, Virtual machines, Load balancer out of official NGINX App Protect AMI image. Second stage sends the traffic including malicious and verifies the solution.
+
+The following diagram represents the end-to-end automation solution. GitLab is used as a CI/CD platform. Gitlab pipeline sets up and configures the entire system from the ground up. The first stage creates all necessary Azure resources such as Azure AS, VMSS, Virtual machines, Load balancer out of official NGINX App Protect AMI image. Second stage sends the traffic including malicious and verifies the solution.
         
 ![image](https://user-images.githubusercontent.com/39581520/174728235-9e974956-6be9-4377-8bed-30990ec1ffff.png)
 
