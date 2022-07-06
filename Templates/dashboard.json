@@ -25,7 +25,7 @@
       "type": "Microsoft.Portal/dashboards",
       "apiVersion": "2020-09-01-preview",
       "name": "[parameters('dashboards_name')]",
-      "location": "eastus",
+      "location": "[parameters('location')]",
       "tags": {
         "hidden-title": "[parameters('dashboards_name')]"
       },
