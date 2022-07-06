@@ -10,10 +10,10 @@ In this article we introduced a project that implements a Cloud Formation templa
 
 Globally, 90% of Fortune 500 companies are using Microsoft Azure to drive their business. Using deeply integrated Azure cloud services, enterprises can rapidly build, deploy, and manage simple to complex applications with ease. Azure supports a wide range of programming languages, frameworks, operating systems, databases, and devices, allowing enterprises to leverage tools and technologies they trust.
 Here are the reasons received from the customers who are deploying their deployments in Azure.
-•	Infrastructure as a Service (IaaS) and Platform as a Service (PaaS) capabilities
-•	Security Offerings, Scalability and Ductility
-•	Integrated Environment with Other Microsoft Tools
-•	Cost Efficient and Interoperability
+*	Infrastructure as a Service (IaaS) and Platform as a Service (PaaS) capabilities
+*	Security Offerings, Scalability and Ductility
+*	Integrated Environment with Other Microsoft Tools
+*	Cost Efficient and Interoperability
 
 ## Architecture:
 ![image](https://user-images.githubusercontent.com/39581520/174727809-8fde48cd-12eb-4d31-a428-1f7e83953418.png)
@@ -21,13 +21,13 @@ Here are the reasons received from the customers who are deploying their deploym
 
 ### Major components:
 
-•	Auto-scaling data plane based on official NGINX App Protect AWS AMI images.
-o	The amount of incoming traffic and the configured rule sets by using the official NGINX App Protect AZURE AMIs to spin up new Virtual Machine instances. It also removes the operational headache and optimizes costs since WAF dynamically adjusts the amount of computing resources and charges a user on an as-you-go basis.
-•	ARM template spec/git repository with the source of data plane and security configuration.
-o	Solution configuration follows Gitlab principles. The Pipeline runs the ARM templates which will connect to the azure portal and deploys the solution. Also, user can directly login to the Azure portal and can run the template under Template Spec which will deploy the solution directly.
+*	Auto-scaling data plane based on official NGINX App Protect AWS AMI images.
+  * The amount of incoming traffic and the configured rule sets by using the official NGINX App Protect AZURE AMIs to spin up new Virtual Machine instances. It also removes the operational headache and optimizes costs since WAF dynamically adjusts the amount of computing resources and charges a user on an as-you-go basis.
+* ARM template spec/git repository with the source of data plane and security configuration.
+  * Solution configuration follows Gitlab principles. The Pipeline runs the ARM templates which will connect to the azure portal and deploys the solution. Also, user can directly login to the Azure portal and can run the template under Template Spec which will deploy the solution directly.
 
-•	Visibility dashboards displaying the WAF health and security data.
-o	The template sets up a set of visibility dashboards in Azure Dashboard Service. Data plane VMs send logs and metrics to Dashboard service that visualizes incoming data as a set of charts and graphs showing WAF health and security violations.
+*	Visibility dashboards displaying the WAF health and security data.
+  * The template sets up a set of visibility dashboards in Azure Dashboard Service. Data plane VMs send logs and metrics to Dashboard service that visualizes incoming data as a set of charts and graphs showing WAF health and security violations.
 Therefore, these three components form a complete WAF solution that is easy to deploy, doesn’t impose any operational headache and provides handy interfaces for WAF configuration and visibility right out of the box.
 
 ![image](https://user-images.githubusercontent.com/39581520/174728235-9e974956-6be9-4377-8bed-30990ec1ffff.png)
@@ -40,19 +40,22 @@ Therefore, these three components form a complete WAF solution that is easy to d
 ## How to Run:
 
 * Pre-requisites:
-  * you should have the admin privillages to your azure resource group.
-  * Login to azure portal (portal.azure.com)
-  * Create the service principle through Az Cli. (how to create the service principle (https://docs.microsoft.com/en-us/cli/azure/create-an-azure-service-principal-azure-cli))
+  * Azure account and credentials.
+  * Admin privileges to your azure resource group.
+  * Service principal and password (follow link to create the service principal (https://docs.microsoft.com/en-us/cli/azure/create-an-azure-service-principal-azure-cli))
+  * Resource group created in the azure portal.
 * Add the below variables under github-->secrets
    * AZURE_SP --> Azure service principle
    * AZURE_PWD --> Azure client password
-   * RUNNER_PATH --> github runner path
 * Add your resource group and other params under Lib/azure-user-params file.
-* On GitHub.com, navigate to the main page of the repository.
-* Under your repository name, click Actions.
-* In the left sidebar, click the workflow you want to run.
+   mandatory params:
+   * resourceGroup
+   * tenandId
+   * subscriptionId
+* On GitHub.com, navigate to the main page of the repository and below repository name, click Actions tab.
+* In the left sidebar select the workflow with name "Cloud Formation Template Deployment in Azure".
 * Above the list of workflow runs, select Run workflow.
-* Use the Branch dropdown to select the workflow's branch, and type the input parameters.
+* Optionally you can select different branch(default is main) from available dropdown, and click on "Run Workflow" button to start executing the CICD.
 
 ## Conclusion:
 
