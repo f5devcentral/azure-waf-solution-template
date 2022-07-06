@@ -21,21 +21,19 @@ Here are the reasons received from the customers who are deploying their deploym
 
 ### Major components:
 
-*	Auto-scaling data plane based on official NGINX App Protect AWS AMI images.
+* ARM template  (git repository with the source of data plane and security configuration):
+  * The Pipeline runs the ARM templates which will connect to the azure portal and deploys the solution. Also, user can directly login to the Azure portal and can run the template under Template Spec which will deploy the solution directly.
+* Auto-scaling (data plane based on official NGINX App Protect AWS AMI images):
   * The amount of incoming traffic and the configured rule sets by using the official NGINX App Protect AZURE AMIs to spin up new Virtual Machine instances. It also removes the operational headache and optimizes costs since WAF dynamically adjusts the amount of computing resources and charges a user on an as-you-go basis.
-* ARM template spec/git repository with the source of data plane and security configuration.
-  * Solution configuration follows Gitlab principles. The Pipeline runs the ARM templates which will connect to the azure portal and deploys the solution. Also, user can directly login to the Azure portal and can run the template under Template Spec which will deploy the solution directly.
-
-*	Visibility dashboards displaying the WAF health and security data.
+* Visibility (dashboards displaying the WAF health and security data):
   * The template sets up a set of visibility dashboards in Azure Dashboard Service. Data plane VMs send logs and metrics to Dashboard service that visualizes incoming data as a set of charts and graphs showing WAF health and security violations.
-Therefore, these three components form a complete WAF solution that is easy to deploy, doesn’t impose any operational headache and provides handy interfaces for WAF configuration and visibility right out of the box.
+  * Dashboard Example:
+  ![image](https://user-images.githubusercontent.com/39581520/174728292-7c9aa06a-377d-4a35-94d2-11d6863a25a5.png)
 
+## Automation:
+        The following diagram represents the end-to-end automation solution. GitLab is used as a CI/CD platform. Gitlab pipeline sets up and configures the entire system from the ground up. The first stage creates all necessary Azure resources such as Azure AS, VMSS, Virtual machines, Load balancer out of official NGINX App Protect AMI image. Second stage sends the traffic including malicious and verifies the solution.
+        
 ![image](https://user-images.githubusercontent.com/39581520/174728235-9e974956-6be9-4377-8bed-30990ec1ffff.png)
-
-## Dashboard:
-
-![image](https://user-images.githubusercontent.com/39581520/174728292-7c9aa06a-377d-4a35-94d2-11d6863a25a5.png)
-
 
 ## How to Run:
 
