@@ -100,10 +100,6 @@ def update_param_file(param_file,resource="cft"):
     jsonFile = open(param_file, "w+")
     jsonFile.write(json.dumps(param_file_data))
     jsonFile.close()
-    param_file_handler = open(param_file, 'r')
-    param_file_data = json.load(param_file_handler)
-    print(param_file_data)
-    param_file_handler.close()
 
 #This function is generated to deploy the ARM template
 def az_arm_deploy(resource_group, template_file, param_file, resource="cft"):
