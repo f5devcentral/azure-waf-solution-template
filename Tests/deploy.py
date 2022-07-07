@@ -19,7 +19,7 @@ if az_id:
         """If login success, then deploy resources."""
         print("AZ Login Sucessfull!!")
         print(banner("Validating the user given params"))
-        if not validate_user_params():       
+        if validate_user_params():       
           print('Deploying the Virtual Machine Scale Set')
           az_arm_deploy(resource_group,autoscale_template,autoscale_param,resource="cft")
           print("Add the required Rules to the Security Group\n HTTP:")
