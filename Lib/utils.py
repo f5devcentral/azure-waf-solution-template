@@ -28,16 +28,18 @@ def validate_user_params():
         for ele in azure_user_data:
             print(ele,"\t:",azure_user_data[ele])
         print("\nVnetId Verification - ",azure_user_data["virnetworkId"])
+        create_vnet_cmd= "az network vnet create --name " + azure_user_data["virnetworkId"] + " --location " + azure_user_data["location_name"] + " -g " + azure_user_data["resourceGroup"] +  " --subnet-name default  --output table"
         vnet_show= "az network vnet show --name " + azure_user_data["virnetworkId"] + " -g " + azure_user_data["resourceGroup"] + " --output table"
         get_vnet= az_get_cmd_op(vnet_show)
         if "ResourceNotFound" in get_vnet:
             print(azure_user_data["virnetworkId"] , "is not exists!!, Creating the same")
-            create_vnet_cmd= "az network vnet create --name " + azure_user_data["virnetworkId"] + " --location " + azure_user_data["location_name"] + " -g " + azure_user_data["resourceGroup"] +  " --subnet-name default  --output table"
+                        create_vnet= az_get_cmd_op(create_vnet_cmd)
+        elif "Succeeded" not in get_wrkspace:
             create_vnet= az_get_cmd_op(create_vnet_cmd)
-            get_vnet2= az_get_cmd_op(vnet_show)
-            if "ResourceNotFound" in get_vnet2:
-                  print(azure_user_data["virnetworkId"] ," Not created")
-                  return False
+        get_vnet2= az_get_cmd_op(vnet_show)
+        if "ResourceNotFound" in get_vnet2:
+            print(azure_user_data["virnetworkId"] ," Not created")
+            return False
         #Workspace verification
         print("\nWorkspace verification - " , azure_user_data["workspaceName"])
         create_law_cmd= "az monitor log-analytics workspace create --location " + azure_user_data["location_name"]  + " -g " + azure_user_data["resourceGroup"] + " --workspace-name " + azure_user_data["workspaceName"]
@@ -55,7 +57,6 @@ def validate_user_params():
             return False 
         return True
             
-        
 def update_param_file(param_file,resource="cft"):
     
     """Change vm deploy params dynamically as per user configuration."""
