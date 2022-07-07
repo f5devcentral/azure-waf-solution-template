@@ -48,7 +48,7 @@ def validate_user_params():
             print(azure_user_data["workspaceName"] , "is not exists!!, Creating the same")
             create_workspace= az_get_cmd_op(create_law_cmd)       
         elif "Succeeded" not in get_wrkspace:
-            create_workspace= az_get_cmd_op(create_law_cm)
+            create_workspace= az_get_cmd_op(create_law_cmd)
         get_workspace= az_get_cmd_op(wsg_show)
         if "ResourceNotFound" in get_workspace:
             print(azure_user_data["workspaceName"] ," Not created")
