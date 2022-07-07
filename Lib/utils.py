@@ -32,7 +32,7 @@ def validate_user_params():
         get_vnet= az_get_cmd_op(vnet_show)
         if "ResourceNotFound" in get_vnet:
             print(azure_user_data["virnetworkId"] , "is not exists!!, Creating the same")
-            create_vnet_cmd= "az network vnet create --name " + azure_user_data["virnetworkId"] + " -g " + azure_user_data["resourceGroup"] +  " --subnet-name default  --output table"
+            create_vnet_cmd= "az network vnet create --name " + azure_user_data["virnetworkId"] + " --location " + azure_user_data["location_name"] + " -g " + azure_user_data["resourceGroup"] +  " --subnet-name default  --output table"
             create_vnet= az_get_cmd_op(create_vnet_cmd)
             get_vnet2= az_get_cmd_op(vnet_show)
             if "ResourceNotFound" in get_vnet2:
