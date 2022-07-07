@@ -33,7 +33,7 @@ def validate_user_params():
         get_vnet= az_get_cmd_op(vnet_show)
         if "ResourceNotFound" in get_vnet:
             print(azure_user_data["virnetworkId"] , "is not exists!!, Creating the same")
-                        create_vnet= az_get_cmd_op(create_vnet_cmd)
+            create_vnet= az_get_cmd_op(create_vnet_cmd)
         elif "Succeeded" not in get_wrkspace:
             create_vnet= az_get_cmd_op(create_vnet_cmd)
         get_vnet2= az_get_cmd_op(vnet_show)
