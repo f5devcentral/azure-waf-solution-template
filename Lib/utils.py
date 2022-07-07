@@ -53,6 +53,7 @@ def validate_user_params():
         if "ResourceNotFound" in get_workspace:
             print(azure_user_data["workspaceName"] ," Not created")
             return False 
+        return True
             
         
 def update_param_file(param_file,resource="cft"):
