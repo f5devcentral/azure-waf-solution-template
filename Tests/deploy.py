@@ -19,21 +19,24 @@ if az_id:
         """If login success, then deploy resources."""
         print("AZ Login Sucessfull!!")
         print(banner("Validating the user given params"))
+        az_arm_deploy(resource_group,template_db,template_dbparam,resource="db")
+        '''
         if validate_user_params():       
-          print('Deploying the Virtual Machine Scale Set')
-          az_arm_deploy(resource_group,autoscale_template,autoscale_param,resource="cft")
-          print("Add the required Rules to the Security Group\n HTTP:")
-          az_get_cmd_op(http_rule)
-          print("SSH:")
-          az_get_cmd_op(ssh_rule)
-          print("Deploy the Telemetry")
-          az_arm_deploy(resource_group,template_db,template_dbparam,resource="db")
-          print(banner("Deployment Completed"))
+            print('Deploying the Virtual Machine Scale Set')
+            az_arm_deploy(resource_group,autoscale_template,autoscale_param,resource="cft")
+            print("Add the required Rules to the Security Group\n HTTP:")
+            az_get_cmd_op(http_rule)
+            print("SSH:")
+            az_get_cmd_op(ssh_rule)
+            print("Deploy the Telemetry")
+            az_arm_deploy(resource_group,template_db,template_dbparam,resource="db")
+            print(banner("Deployment Completed"))
         else:
-         print("Deployment Failed")
-         exit        
+            print("Deployment Failed")
+            exit
+        '''      
     except BaseException:
-        logging.exception("An exception was thrown!")
+        logging.exception("An exception was thrown!")        
 else:
     print("Error: Unable to connect to Azure CLI")
 
