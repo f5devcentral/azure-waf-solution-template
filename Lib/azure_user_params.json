@@ -1,6 +1,6 @@
 {"cftName": "azure-cft",
 "location_name": "eastus",
-"dashboard_name": "NGINX App Protect WAF Dashboard pi11",
+"dashboard_name": "NGINX-App-Protect-WAF-Dashboard",
 "virnetworkId": "azure-cft-vnet",
 "workspaceName": "azure-cft-workspace-pi11",
 "adminUsername": "demouser",
