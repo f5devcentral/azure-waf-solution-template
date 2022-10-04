@@ -20,7 +20,7 @@ if az_id:
         print("AZ Login Sucessfull!!")
         print(banner("Validating the user given params"))
         az_arm_deploy(resource_group,template_db,template_dbparam,resource="db")
-        '''
+        
         if validate_user_params():       
             print('Deploying the Virtual Machine Scale Set')
             az_arm_deploy(resource_group,autoscale_template,autoscale_param,resource="cft")
@@ -34,7 +34,7 @@ if az_id:
         else:
             print("Deployment Failed")
             exit
-        '''      
+            
     except BaseException:
         logging.exception("An exception was thrown!")        
 else:
