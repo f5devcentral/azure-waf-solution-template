@@ -2,7 +2,7 @@
 "location_name": "eastus",
 "dashboard_name": "NGINX-App-Protect-WAF-Dashboard",
 "virnetworkId": "azure-cft-vnet",
-"workspaceName": "azure-cft-workspace-pi11",
+"workspaceName": "azure-cft-workspace",
 "adminUsername": "demouser",
 "adminPassword": "Demouser1234",
 "resourceGroup": "user-shshaik",
