@@ -110,9 +110,13 @@ def az_arm_deploy(resource_group, template_file, param_file, resource="cft"):
     """Deploy resources in Azure using templates."""
     try:
         # update vm params as per user config
+        print("1")
         update_param_file(param_file,resource)
+        print("2")
         az_deploy= "az deployment group create --resource-group " + resource_group + " --template-file " + template_file + " --parameters " + param_file + " --output table " 
+        print("3")
         deploy = subprocess.run(az_deploy, shell = True, stdout=subprocess.PIPE, stderr = subprocess.PIPE)
+        print("4")
         az_dp_out =  deploy.stdout.decode("utf-8")
         az_dp_err =  deploy.stderr.decode("utf-8")
         print(az_dp_out,"\n\n",az_dp_err)
