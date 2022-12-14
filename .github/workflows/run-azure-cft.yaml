@@ -18,7 +18,7 @@ jobs:
           python -m pip install art
           python -m pip install azure-cli==2.32.0
           az --version
-          az config set extension.use_dynamic_install=yes_without_prompt 
+          #az config set extension.use_dynamic_install=yes_without_prompt 
       - name: Deploy Azure CFT
         run: |
           python /home/runner/work/azure-waf-solution-template/azure-waf-solution-template/Tests/deploy.py ${{secrets.AZURE_SP}} ${{secrets.AZURE_PWD}}
