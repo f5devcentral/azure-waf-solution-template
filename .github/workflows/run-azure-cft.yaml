@@ -25,7 +25,7 @@ jobs:
       - name: TEST Nginx App Protect WAF with Azure CFT
         run: |
           python /home/runner/work/azure-waf-solution-template/azure-waf-solution-template/Tests/test.py ${{secrets.AZURE_SP}} ${{secrets.AZURE_PWD}}
-      - name: Destroy Azure CFT
-        run: |
-          python /home/runner/work/azure-waf-solution-template/azure-waf-solution-template/Tests/destroy.py ${{secrets.AZURE_SP}} ${{secrets.AZURE_PWD}}
+      #- name: Destroy Azure CFT
+      #  run: |
+      #    python /home/runner/work/azure-waf-solution-template/azure-waf-solution-template/Tests/destroy.py ${{secrets.AZURE_SP}} ${{secrets.AZURE_PWD}}
       
