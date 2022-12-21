@@ -1,0 +1,136 @@
+{
+   "policy": {
+       "name": "policy_name",
+       "template": { "name": "POLICY_TEMPLATE_NGINX_BASE" },
+       "applicationLanguage": "utf-8",
+       "enforcementMode": "blocking",
+       "signature-sets": [
+          {
+              "name": "High Accuracy Signatures",
+              "block": true,
+              "alarm": true
+          }
+      ],
+       "bot-defense": {
+          "settings": {
+              "isEnabled": true
+          },
+          "mitigations": {
+              "classes": [
+                  {
+                      "name": "trusted-bot",
+                      "action": "block"
+                  },
+                  {
+                      "name": "untrusted-bot",
+                      "action": "block"
+                  },
+                  {
+                      "name": "malicious-bot",
+                      "action": "block"
+                  }
+              ]
+          }
+       },
+       "blocking-settings": {
+           "violations": [
+               {
+                   "name": "VIOL_PARAMETER_VALUE_METACHAR",
+                   "alarm": false,
+                   "block": false
+               },
+               {
+                  "name": "VIOL_HTTP_PROTOCOL",
+                  "alarm": true,
+                  "block": false
+              },
+              {
+                  "name": "VIOL_EVASION",
+                  "alarm": true,
+                  "block": true
+              },
+              {
+                  "name": "VIOL_FILETYPE",
+                  "alarm": true,
+                  "block": true
+              },
+              {
+                  "name": "VIOL_METHOD",
+                  "alarm": true,
+                  "block": true
+              }
+           ],
+           "http-protocols": [
+               {
+                   "description": "Header name with no header value",
+                   "enabled": true
+               },
+               {
+                   "description": "Chunked request with Content-Length header",
+                   "enabled": true
+               },
+               {
+                   "description": "Check maximum number of parameters",
+                   "enabled": true,
+                   "maxParams": 5
+               },
+               {
+                   "description": "Check maximum number of headers",
+                   "enabled": true,
+                   "maxHeaders": 30
+               },
+               {
+                   "description": "Body in GET or HEAD requests",
+                   "enabled": true
+               },
+               {
+                   "description": "Bad multipart/form-data request parsing",
+                   "enabled": true
+               },
+               {
+                   "description": "Bad multipart parameters parsing",
+                   "enabled": true
+               },
+               {
+                   "description": "Unescaped space in URL",
+                   "enabled": true
+               }
+           ],
+               "evasions": [
+                   {
+                       "description": "Bad unescape",
+                       "enabled": true
+                   },
+                   {
+                       "description": "Directory traversals",
+                       "enabled": true
+                   },
+                   {
+                       "description": "Bare byte decoding",
+                       "enabled": true
+                   },
+                   {
+                       "description": "Apache whitespace",
+                       "enabled": true
+                   },
+                   {
+                       "description": "Multiple decoding",
+                       "enabled": true,
+                       "maxDecodingPasses": 2
+                   },
+                   {
+                       "description": "IIS Unicode codepoints",
+                       "enabled": true
+                   },
+                   {
+                       "description": "IIS backslashes",
+                       "enabled": true
+                   },
+                   {
+                       "description": "%u decoding",
+                       "enabled": true
+                   }
+               ]
+         }
+    }
+}
