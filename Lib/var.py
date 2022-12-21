@@ -31,6 +31,8 @@ chk_str="Arcadia Finance"
 chk_def = "Welcome to NGINX Plus on Azure"
 command_lst = ["ls", "sudo cp nginx.conf /etc/nginx/nginx.conf" , "sudo systemctl restart nginx"]
 command_lst2 = ["systemctl status nginx"]
+command_lst3 = ["sudo cp NAP_API_Policy.json /etc/app_protect/conf/NAP_API_Policy.json", "sudo cp NAP_Web_Policy.json /etc/app_protect/conf/NAP_Web_Policy.json", "ls -lrt /etc/app_protect/conf/"]
+
 log_file= "./Log/vm_log.txt"
 apply_stress= ["for i in $(seq $(getconf _NPROCESSORS_ONLN)); do yes > /dev/null & done"]
 remove_stress=["killall yes"]
