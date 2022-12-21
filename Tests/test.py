@@ -40,6 +40,34 @@ if az_id:
                     print("ERROR:  NGINX Static Page Verification is Failed!!!")
                 
                 print(banner("+"))                
+                print(banner("TC-2: Nginx App Protect validation with custom Policy files"))
+                print(banner("+"))
+                ssh_id=ssh_connect(vmss_ip_lst[0],vmss_port_list[0],username,vm_password)
+                if ssh_id != "retry":
+                    with SCPClient(ssh_id.get_transport()) as scp:  scp.put('Lib/nginx_web_policy.json','NAP_Web_Policy.json')
+                    with SCPClient(ssh_id.get_transport()) as scp:  scp.put('Lib/nginx_api_policy.json','NAP_API_Policy.json') 
+                    with SCPClient(ssh_id.get_transport()) as scp:  scp.put('Lib/nginx_web.conf','nginx.conf')                    
+                    for cmd in [command_lst3,command_lst,command_lst2]:
+                        exec_shell_cmd(ssh_id,cmd)
+                        time.sleep(10)
+                print("Verifying Bot policies")      
+                if vfy_nginx(vmss_ip_lst[0],"support ID"):
+                        print("*** Nginx App Protect WEB custom policy verification is Successfull!!! *** \n")
+                else:
+                        print("*** Nginx App Protect WEB custom policy verification is Failed!!! *** \n")
+                with SCPClient(ssh_id.get_transport()) as scp:  scp.put('Lib/nginx_api.conf','nginx.conf')                    
+                    for cmd in [command_lst,command_lst2]:
+                        exec_shell_cmd(ssh_id,cmd)
+                        time.sleep(10)        
+                if vfy_nginx(vmss_ip_lst[0],"support ID"):
+                        print("*** Nginx App Protect API custom policy verification is Successfull!!! *** \n")
+                else:
+                        print("*** Nginx App Protect API custom policy verification is Failed!!! *** \n")
+                with SCPClient(ssh_id.get_transport()) as scp:  scp.put('Lib/nginx_conf_nap.conf','nginx.conf')                    
+                    for cmd in [command_lst3,command_lst,command_lst2]:
+                        exec_shell_cmd(ssh_id,cmd)
+                        time.sleep(10)
+                print(banner("+"))                
                 print(banner("TC-2: NAP Dynamic Page Verification"))
                 print(banner("+"))
                 ssh_id=ssh_connect(vmss_ip_lst[0],vmss_port_list[0],username,vm_password)
