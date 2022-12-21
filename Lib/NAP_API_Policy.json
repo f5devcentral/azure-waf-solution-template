@@ -1,0 +1,233 @@
+{
+  "policy": {
+      "name": "policy_name",
+      "template": { "name": "POLICY_TEMPLATE_NGINX_BASE" },
+      "applicationLanguage": "utf-8",
+      "enforcementMode": "blocking",
+      "signature-sets": [
+          {
+              "name": "High Accuracy Signatures",
+              "block": true,
+              "alarm": true
+          }
+      ],
+      "bot-defense": {
+          "settings": {
+              "isEnabled": true
+          },
+          "mitigations": {
+              "classes": [
+                  {
+                      "name": "trusted-bot",
+                      "action": "block"
+                  },
+                  {
+                      "name": "untrusted-bot",
+                      "action": "block"
+                  },
+                  {
+                      "name": "malicious-bot",
+                      "action": "block"
+                  }
+              ]
+          }
+      },
+      "open-api-files": [
+          {
+              "link": "https://raw.githubusercontent.com/vtobi/arcadia-finance/main/OpenAPI/open-api-spec.json"
+          }
+      ],
+     "blocking-settings": {
+          "violations": [
+              {
+                  "name": "VIOL_JSON_FORMAT",
+                  "alarm": true,
+                  "block": true
+              },
+              {
+                  "name": "VIOL_PARAMETER_VALUE_METACHAR",
+                  "alarm": false,
+                  "block": false
+              },
+              {
+                  "name": "VIOL_HTTP_PROTOCOL",
+                  "alarm": true,
+                  "block": false
+              },
+              {
+                  "name": "VIOL_EVASION",
+                  "alarm": true,
+                  "block": true
+              },
+              {
+                  "name": "VIOL_FILETYPE",
+                  "alarm": true,
+                  "block": true
+              },
+              {
+                  "name": "VIOL_METHOD",
+                  "alarm": true,
+                  "block": true
+              },
+              {
+                  "block": true,
+                  "description": "Disallowed file upload content detected in body",
+                  "name": "VIOL_FILE_UPLOAD_IN_BODY"
+              },
+              {
+                  "block": true,
+                  "description": "Mandatory request body is missing",
+                  "name": "VIOL_MANDATORY_REQUEST_BODY"
+              },
+              {
+                  "block": true,
+                  "description": "Illegal parameter location",
+                  "name": "VIOL_PARAMETER_LOCATION"
+              },
+              {
+                  "block": true,
+                  "description": "Mandatory parameter is missing",
+                  "name": "VIOL_MANDATORY_PARAMETER"
+              },
+              {
+                  "block": true,
+                  "description": "Illegal parameter numeric value",
+                  "name": "VIOL_PARAMETER_NUMERIC_VALUE"
+              },
+              {
+                  "block": true,
+                  "description": "JSON data does not comply with JSON schema",
+                  "name": "VIOL_JSON_SCHEMA"
+              },
+              {
+                  "block": true,
+                  "description": "Illegal parameter array value",
+                  "name": "VIOL_PARAMETER_ARRAY_VALUE"
+              },
+              {
+                  "block": true,
+                  "description": "Illegal Base64 value",
+                  "name": "VIOL_PARAMETER_VALUE_BASE64"
+              },
+              {
+                  "block": true,
+                  "description": "Disallowed file upload content detected",
+                  "name": "VIOL_FILE_UPLOAD"
+              },
+              {
+                  "block": true,
+                  "description": "Illegal request content type",
+                  "name": "VIOL_URL_CONTENT_TYPE"
+              },
+              {
+                  "block": true,
+                  "description": "Disallowed file upload content detected",
+                  "name": "VIOL_FILE_UPLOAD"
+              },
+              {
+                  "block": true,
+                  "description": "Illegal request content type",
+                  "name": "VIOL_URL_CONTENT_TYPE"
+              },
+              {
+                  "block": true,
+                  "description": "Illegal parameter data type",
+                  "name": "VIOL_PARAMETER_DATA_TYPE"
+              },
+              {
+                  "block": true,
+                  "description": "Parameter value does not comply with regular expression",
+                  "name": "VIOL_PARAMETER_VALUE_REGEXP"
+              },
+              {
+                  "block": false,
+                  "description": "Illegal URL",
+                  "name": "VIOL_URL"
+              },
+              {
+                  "block": true,
+                  "description": "Illegal parameter",
+                  "name": "VIOL_PARAMETER"
+              },
+              {
+                  "block": true,
+                  "description": "Illegal empty parameter value",
+                  "name": "VIOL_PARAMETER_EMPTY_VALUE"
+              },
+              {
+                  "block": true,
+                  "description": "Illegal repeated parameter name",
+                  "name": "VIOL_PARAMETER_REPEATED"
+              }
+          ],
+          "http-protocols": [
+              {
+                  "description": "Header name with no header value",
+                  "enabled": true
+              },
+              {
+                  "description": "Chunked request with Content-Length header",
+                  "enabled": true
+              },
+              {
+                  "description": "Check maximum number of parameters",
+                  "enabled": true,
+                  "maxParams": 5
+              },
+              {
+                  "description": "Check maximum number of headers",
+                  "enabled": true,
+                  "maxHeaders": 30
+              },
+              {
+                  "description": "Body in GET or HEAD requests",
+                  "enabled": true
+              },
+              {
+                  "description": "Bad multipart/form-data request parsing",
+                  "enabled": true
+              },
+              {
+                  "description": "Bad multipart parameters parsing",
+                  "enabled": true
+              },
+              {
+                  "description": "Unescaped space in URL",
+                  "enabled": true
+              }
+          ],
+          "evasions": [
+              {
+                  "description": "Bad unescape",
+                  "enabled": true
+              },
+              {
+                  "description": "Directory traversals",
+                  "enabled": true
+              },
+              {
+                  "description": "Bare byte decoding",
+                  "enabled": true
+              },
+              {
+                  "description": "Apache whitespace",
+                  "enabled": true
+              },
+              {
+                  "description": "Multiple decoding",
+                  "enabled": true,
+                  "maxDecodingPasses": 2
+              },
+              {
+                  "description": "IIS Unicode codepoints",
+                  "enabled": true
+              },
+              {
+                  "description": "%u decoding",
+                  "enabled": true
+              }
+          ]
+       }
+
+  }
+}
