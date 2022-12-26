@@ -186,12 +186,12 @@ def turn_instance_state(inst_num,action,vmssName,resource_grp):
 
 #This function verify the http status of LB
 def vfy_nginx(url,cond_chk):
-    print("url,cond_chk",url,cond_chk)
+    #print("url,cond_chk",url,cond_chk)
     try:
         if "http" not in url:
             url="http://"+url
         data=requests.get(url)
-        print("data: ",data.text)
+        print("\n****",data.text,"***\n")
         '''
         data = urllib.request.urlopen(url).read()
         bsoup = BeautifulSoup(data, "html.parser")
