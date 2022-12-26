@@ -189,11 +189,19 @@ def vfy_nginx(url,cond_chk):
     try:
         if "http" not in url:
             url="http://"+url
+        data=requests.get(url)
+        print(data.text)
+        '''
         data = urllib.request.urlopen(url).read()
         bsoup = BeautifulSoup(data, "html.parser")
         title = bsoup.find('title')
         print(title)
         if cond_chk in title.string:
+            return True
+        else:
+            return False
+        '''
+        if cond_chk in data.text:
             return True
         else:
             return False
