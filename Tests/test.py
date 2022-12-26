@@ -64,7 +64,7 @@ if az_id:
                 else:
                         print("*** Nginx App Protect API custom policy verification is Failed!!! *** \n")
                 with SCPClient(ssh_id.get_transport()) as scp:  scp.put('Lib/nginx_conf_nap.conf','nginx.conf')                    
-                    for cmd in [command_lst3,command_lst,command_lst2]:
+                    for cmd in [command_lst,command_lst2]:
                         exec_shell_cmd(ssh_id,cmd)
                         time.sleep(10)
                 print(banner("+"))                
