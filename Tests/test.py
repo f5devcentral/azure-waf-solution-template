@@ -50,25 +50,29 @@ if az_id:
                     for cmd in [command_lst3,command_lst,command_lst2]:
                         exec_shell_cmd(ssh_id,cmd)
                         time.sleep(10)
-                print("Verifying Bot policies")      
-                if vfy_nginx(vmss_ip_lst[0],"support ID"):
+                
+                    print("Verifying Bot policies")      
+                    if vfy_nginx(vmss_ip_lst[0],"support ID"):
                         print("*** Nginx App Protect WEB custom policy verification is Successfull!!! *** \n")
-                else:
+                    else:
                         print("*** Nginx App Protect WEB custom policy verification is Failed!!! *** \n")
-                with SCPClient(ssh_id.get_transport()) as scp:  scp.put('Lib/nginx_api.conf','nginx.conf')                    
+                
+                    with SCPClient(ssh_id.get_transport()) as scp:  scp.put('Lib/nginx_api.conf','nginx.conf')                    
                     for cmd in [command_lst,command_lst2]:
                         exec_shell_cmd(ssh_id,cmd)
                         time.sleep(10)        
-                if vfy_nginx(vmss_ip_lst[0],"support ID"):
+                    
+                    if vfy_nginx(vmss_ip_lst[0],"support ID"):
                         print("*** Nginx App Protect API custom policy verification is Successfull!!! *** \n")
-                else:
+                    else:
                         print("*** Nginx App Protect API custom policy verification is Failed!!! *** \n")
-                with SCPClient(ssh_id.get_transport()) as scp:  scp.put('Lib/nginx_conf_nap.conf','nginx.conf')                    
+                    with SCPClient(ssh_id.get_transport()) as scp:  scp.put('Lib/nginx_conf_nap.conf','nginx.conf')                    
                     for cmd in [command_lst,command_lst2]:
                         exec_shell_cmd(ssh_id,cmd)
                         time.sleep(10)
+                
                 print(banner("+"))                
-                print(banner("TC-2: NAP Dynamic Page Verification"))
+                print(banner("TC-3: NAP Dynamic Page Verification"))
                 print(banner("+"))
                 ssh_id=ssh_connect(vmss_ip_lst[0],vmss_port_list[0],username,vm_password)
                 if ssh_id != "retry":
@@ -80,7 +84,7 @@ if az_id:
                 if vfy_nginx(vmss_ip_lst[0],chk_str):
                     print("*** Nginx App Protect dynamic page verification with Arcadia Application is Successfull!!! *** \n")
                     print(banner("+"))
-                    print(banner("TC-3: NAP Testing with malicious attacks"))
+                    print(banner("TC-4: NAP Testing with malicious attacks"))
                     print(banner("+"))                
                     print("\n***      cross script      ***")
                     output = cross_script_attack(vmss_ip_lst[0])
@@ -116,7 +120,7 @@ if az_id:
                 
         if LB_TEST:
             print(banner("+"))
-            print(banner("TC-4: Load Balancer TEST with Fault Tolarance"))
+            print(banner("TC-5: Load Balancer TEST with Fault Tolarance"))
             print(banner("+"))
             turn_instance_state(str(vmss_port_list[1])[-2],"stop",vmssName,resource_group)
             time.sleep(30)
@@ -133,7 +137,7 @@ if az_id:
                 turn_instance_state(str(vmss_port_list[1])[-2],"start",vmssName,resource_group)
                 time.sleep(60)
                 print(banner("+"))
-                print(banner("TC-5: AutoScale TEST "))
+                print(banner("TC-6: AutoScale TEST "))
                 print(banner("+"))
                 print("Current No of instances under VMSS:",vmssName,vmss_ip_lst,vmss_port_list)
                 print("Imposing HIGH TRAFFIC on available instances")
