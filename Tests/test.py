@@ -65,54 +65,48 @@ if az_id:
                         print("\n*** Nginx App Protect API custom policy verification is Successfull!!! *** \n")
                     else:
                         print("\n*** Nginx App Protect API custom policy verification is Failed!!! *** \n")
+                    
+                    print(banner("+"))                
+                    print(banner("TC-3: NAP Dynamic Page Verification"))
+                    print(banner("+"))
                     with SCPClient(ssh_id.get_transport()) as scp:  scp.put('Lib/nginx_conf_nap.conf','nginx.conf')                    
                     for cmd in [command_lst,command_lst2]:
                         exec_shell_cmd(ssh_id,cmd)
-                        time.sleep(10)
-
-                print(banner("+"))                
-                print(banner("TC-3: NAP Dynamic Page Verification"))
-                print(banner("+"))
-                ssh_id=ssh_connect(vmss_ip_lst[0],vmss_port_list[0],username,vm_password)
-                if ssh_id != "retry":
-                    with SCPClient(ssh_id.get_transport()) as scp:  scp.put('Lib/nginx_conf_nap.conf','nginx.conf')
-                    for cmd in [command_lst,command_lst2]:
-                        exec_shell_cmd(ssh_id,cmd)
-                        time.sleep(20)
+                        time.sleep(25)
                 
-                if vfy_nginx(vmss_ip_lst[0],chk_str):
-                    print("*** Nginx App Protect dynamic page verification with Arcadia Application is Successfull!!! *** \n")
-                    print(banner("+"))
-                    print(banner("TC-4: NAP Testing with malicious attacks"))
-                    print(banner("+"))                
-                    print("\n***      cross script      ***")
-                    output = cross_script_attack(vmss_ip_lst[0])
-                    print(output)
-                    assert "support ID" in output
-                    print("***      cross script attack blocked. ***")
-                    print("\n***      sql injection       ***")
-                    output = sql_injection_attack(vmss_ip_lst[0])
-                    print(output)
-                    assert "support ID" in output
-                    print("***   sql injection script attack blocked.  ***")
-                    print("\n***      command injection       ***")
-                    output = command_injection_attack(vmss_ip_lst[0])
-                    print(output)
-                    assert "support ID" in output
-                    print("***      command injection attack blocked. ***")
-                    print("\n***      directory traversal      ***")
-                    output = directory_traversal_attack(vmss_ip_lst[0])
-                    print(output)
-                    assert "support ID" in output
-                    print("***    directory traversal attack blocked.    ***")
-                    print("\n***      file inclusion      ***")
-                    output = file_inclusion_attack(vmss_ip_lst[0])
-                    print(output)
-                    assert "support ID" in output
-                    print("***   file inclusion attack blocked.   ***\n")
-                else:
-                    print(banner("ERROR: Nginx App Protect dynamic page verification is Failed!!!"))
-                turn_instance_state(str(vmss_port_list[1])[-1],"start",vmssName,resource_group)
+                    if vfy_nginx(vmss_ip_lst[0],chk_str):
+                        print("*** Nginx App Protect dynamic page verification with Arcadia Application is Successfull!!! *** \n")
+                        print(banner("+"))
+                        print(banner("TC-4: NAP Testing with malicious attacks"))
+                        print(banner("+"))                
+                        print("\n***      cross script      ***")
+                        output = cross_script_attack(vmss_ip_lst[0])
+                        print(output)
+                        assert "support ID" in output
+                        print("***      cross script attack blocked. ***")
+                        print("\n***      sql injection       ***")
+                        output = sql_injection_attack(vmss_ip_lst[0])
+                        print(output)
+                        assert "support ID" in output
+                        print("***   sql injection script attack blocked.  ***")
+                        print("\n***      command injection       ***")
+                        output = command_injection_attack(vmss_ip_lst[0])
+                        print(output)
+                        assert "support ID" in output
+                        print("***      command injection attack blocked. ***")
+                        print("\n***      directory traversal      ***")
+                        output = directory_traversal_attack(vmss_ip_lst[0])
+                        print(output)
+                        assert "support ID" in output
+                        print("***    directory traversal attack blocked.    ***")
+                        print("\n***      file inclusion      ***")
+                        output = file_inclusion_attack(vmss_ip_lst[0])
+                        print(output)
+                        assert "support ID" in output
+                        print("***   file inclusion attack blocked.   ***\n")
+                    else:
+                        print(banner("ERROR: Nginx App Protect dynamic page verification is Failed!!!"))
+                #turn_instance_state(str(vmss_port_list[1])[-1],"start",vmssName,resource_group)
             except AssertionError:
                 print("Encountered a Problem")
                 raise
