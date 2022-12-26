@@ -51,20 +51,20 @@ if az_id:
                         exec_shell_cmd(ssh_id,cmd)
                         time.sleep(10)
                         
-                    print("Verifying Bot policies")      
+                    print("Verifying Bot policies\n")      
                     if vfy_nginx(vmss_ip_lst[0],"support ID"):
-                        print("*** Nginx App Protect WEB custom policy verification is Successfull!!! *** \n")
+                        print("\n*** Nginx App Protect WEB custom policy verification is Successfull!!! *** \n")
                     else:
-                        print("*** Nginx App Protect WEB custom policy verification is Failed!!! *** \n")
+                        print("\n*** Nginx App Protect WEB custom policy verification is Failed!!! *** \n")
                         
                     with SCPClient(ssh_id.get_transport()) as scp:  scp.put('Lib/nginx_api.conf','nginx.conf')                    
                     for cmd in [command_lst,command_lst2]:
                         exec_shell_cmd(ssh_id,cmd)
                         time.sleep(10)
-                    if vfy_nginx(vmss_ip_lst[0],"support ID"):
-                        print("*** Nginx App Protect API custom policy verification is Successfull!!! *** \n")
+                    if vfy_nginx(vmss_ip_lst[0],"supportID"):
+                        print("\n*** Nginx App Protect API custom policy verification is Successfull!!! *** \n")
                     else:
-                        print("*** Nginx App Protect API custom policy verification is Failed!!! *** \n")
+                        print("\n*** Nginx App Protect API custom policy verification is Failed!!! *** \n")
                     with SCPClient(ssh_id.get_transport()) as scp:  scp.put('Lib/nginx_conf_nap.conf','nginx.conf')                    
                     for cmd in [command_lst,command_lst2]:
                         exec_shell_cmd(ssh_id,cmd)
