@@ -50,7 +50,7 @@ if az_id:
                     for cmd in [command_lst3,command_lst,command_lst2]:
                         exec_shell_cmd(ssh_id,cmd)
                         time.sleep(10)
-                
+                        
                     print("Verifying Bot policies")      
                     if vfy_nginx(vmss_ip_lst[0],"support ID"):
                         print("*** Nginx App Protect WEB custom policy verification is Successfull!!! *** \n")
@@ -69,7 +69,7 @@ if az_id:
                     for cmd in [command_lst,command_lst2]:
                         exec_shell_cmd(ssh_id,cmd)
                         time.sleep(10)
-                
+
                 print(banner("+"))                
                 print(banner("TC-3: NAP Dynamic Page Verification"))
                 print(banner("+"))
