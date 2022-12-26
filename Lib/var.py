@@ -3,8 +3,8 @@ path= "/home/runner/work/azure-waf-solution-template/azure-waf-solution-template
 sys.path.insert(0, path)
 
 NAP_TEST = True
-LB_TEST = True
-AutoScale_TEST = True
+LB_TEST = False
+AutoScale_TEST = False
 
 #Variable Declaration
 azure_user_json= "Lib/azure_user_params.json"
