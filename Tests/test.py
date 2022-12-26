@@ -56,12 +56,11 @@ if az_id:
                         print("*** Nginx App Protect WEB custom policy verification is Successfull!!! *** \n")
                     else:
                         print("*** Nginx App Protect WEB custom policy verification is Failed!!! *** \n")
-                
+                        
                     with SCPClient(ssh_id.get_transport()) as scp:  scp.put('Lib/nginx_api.conf','nginx.conf')                    
                     for cmd in [command_lst,command_lst2]:
                         exec_shell_cmd(ssh_id,cmd)
-                        time.sleep(10)        
-                    
+                        time.sleep(10)
                     if vfy_nginx(vmss_ip_lst[0],"support ID"):
                         print("*** Nginx App Protect API custom policy verification is Successfull!!! *** \n")
                     else:
