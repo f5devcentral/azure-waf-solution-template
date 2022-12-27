@@ -195,27 +195,19 @@ def vfy_nginx(url,cond_chk):
         #print(data.text)
         data_head= bs4.BeautifulSoup(data.text)
         title=data_head.title
-        print(title)
-        '''
-        data = urllib.request.urlopen(url).read()
-        bsoup = BeautifulSoup(data, "html.parser")
-        title = bsoup.find('title')
-        print("this is title",title,title.string)
-        
-        if cond_chk in title.string:
-            return True
+        if "support" in cond_chk:
+            print(data.text)
         else:
-            return False
-        '''
+            print(title)
         if cond_chk in data.text:
             return True
         else:
             return False
-    except urllib.error.HTTPError as e:
-        print(e.__dict__)
+    except requests.exceptions.HTTPError as e:
+        print("Http Error:",e)
         return False
-    except urllib.error.URLError as e:
-        print(e.__dict__)
+    except requests.exceptions.Timeout as e:
+        print ("Timeout Error:",e)
         return False
 
 #This function returns the IP address lst from a given content
