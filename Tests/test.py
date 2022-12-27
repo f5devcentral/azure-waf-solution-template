@@ -38,7 +38,7 @@ if az_id:
                     print("*** NGINX Static Page Verification is Completed!!! *** \n")
                 else:
                     print("ERROR:  NGINX Static Page Verification is Failed!!!")
-                '''
+                
                 print(banner("+"))                
                 print(banner("TC-2: Nginx App Protect validation with custom Policy files"))
                 print(banner("+"))
@@ -107,7 +107,7 @@ if az_id:
                     else:
                         print(banner("ERROR: Nginx App Protect dynamic page verification is Failed!!!"))
                 #turn_instance_state(str(vmss_port_list[1])[-1],"start",vmssName,resource_group)
-                '''
+                
             except AssertionError:
                 print("Encountered a Problem")
                 raise
