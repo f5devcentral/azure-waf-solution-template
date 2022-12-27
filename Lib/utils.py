@@ -191,7 +191,10 @@ def vfy_nginx(url,cond_chk):
         if "http" not in url:
             url="http://"+url
         data=requests.get(url)
-        print(data.text)
+        #print(data.text)
+        data_head= bs4.BeautifulSoup(data.text)
+        title=data_head.title
+        print(title)
         '''
         data = urllib.request.urlopen(url).read()
         bsoup = BeautifulSoup(data, "html.parser")
