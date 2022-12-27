@@ -56,6 +56,9 @@ The following diagram represents the end-to-end automation solution. GitLab is u
 * Above the list of workflow runs, select Run workflow.
 * Optionally you can select different branch(default is main) from available dropdown, and click on "Run Workflow" button to start executing the CICD.
 
+## Enhancements:
+* Added new testcase TC-2 which will validate the deployment with NGINX Custom Policy files having blocked mitigation action for trusted,untrusted and malicious traffic (web,API).
+
 ## Conclusion:
 
 Therefore, the use of a template to deploy a cloud WAF allows to significantly reduce time spent on WAF deployment and maintenance. Also, it gives a complete and easy-to-use solution to deploy the resources and verify the NGINX solution in Azure platform in any location. Handy interfaces for configuration and visibility turn this project into a boxed solution allowing a user to easily operate a WAF and focus on application security.
