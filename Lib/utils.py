@@ -5,7 +5,8 @@ from Lib.var import azure_user_json
 from paramiko.ssh_exception import SSHException
 from scp import SCPClient
 import requests,urllib,re
-from bs4 import BeautifulSoup
+import bs4
+#from bs4 import BeautifulSoup
 import json
 import logging,socket
 
