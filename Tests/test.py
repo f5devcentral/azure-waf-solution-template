@@ -50,8 +50,7 @@ if az_id:
                     for cmd in [command_lst3,command_lst,command_lst2]:
                         exec_shell_cmd(ssh_id,cmd)
                         time.sleep(10)
-                        
-                    print("Verifying Bot policies\n")      
+                            
                     if vfy_nginx(vmss_ip_lst[0],"support ID"):
                         print("\n*** Nginx App Protect WEB custom policy verification is Successfull!!! *** \n")
                     else:
@@ -72,8 +71,7 @@ if az_id:
                     with SCPClient(ssh_id.get_transport()) as scp:  scp.put('Lib/nginx_conf_nap.conf','nginx.conf')                    
                     for cmd in [command_lst,command_lst2]:
                         exec_shell_cmd(ssh_id,cmd)
-                        time.sleep(25)
-                
+                        time.sleep(15)                
                     if vfy_nginx(vmss_ip_lst[0],chk_str):
                         print("*** Nginx App Protect dynamic page verification with Arcadia Application is Successfull!!! *** \n")
                         print(banner("+"))
@@ -106,7 +104,7 @@ if az_id:
                         print("***   file inclusion attack blocked.   ***\n")
                     else:
                         print(banner("ERROR: Nginx App Protect dynamic page verification is Failed!!!"))
-                #turn_instance_state(str(vmss_port_list[1])[-1],"start",vmssName,resource_group)
+                turn_instance_state(str(vmss_port_list[1])[-1],"start",vmssName,resource_group)
                 
             except AssertionError:
                 print("Encountered a Problem")
