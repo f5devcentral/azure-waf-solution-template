@@ -196,7 +196,7 @@ def vfy_nginx(url,cond_chk):
         data = urllib.request.urlopen(url).read()
         bsoup = BeautifulSoup(data, "html.parser")
         title = bsoup.find('title')
-        print(title)
+        print("\n\n\n\n",title)
         '''
         if cond_chk in title.string:
             return True
