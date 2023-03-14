@@ -71,7 +71,9 @@ if az_id:
                     with SCPClient(ssh_id.get_transport()) as scp:  scp.put('Lib/nginx_conf_nap.conf','nginx.conf')                    
                     for cmd in [command_lst,command_lst2]:
                         exec_shell_cmd(ssh_id,cmd)
-                        time.sleep(15)                
+                        time.sleep(15)  
+                    print("Check check \n")
+                    print(vmss_ip_lst[0],chk_str)
                     if vfy_nginx(vmss_ip_lst[0],chk_str):
                         print("*** Nginx App Protect dynamic page verification with Arcadia Application is Successfull!!! *** \n")
                         print(banner("+"))
@@ -109,7 +111,7 @@ if az_id:
             except AssertionError:
                 print("Encountered a Problem")
                 raise
-                
+        exit()        
         if LB_TEST:
             print(banner("+"))
             print(banner("TC-5: Load Balancer TEST with Fault Tolarance"))
