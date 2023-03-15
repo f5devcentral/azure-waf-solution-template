@@ -111,7 +111,7 @@ if az_id:
             except AssertionError:
                 print("Encountered a Problem")
                 raise
-        exit()        
+            
         if LB_TEST:
             print(banner("+"))
             print(banner("TC-5: Load Balancer TEST with Fault Tolarance"))
